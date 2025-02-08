@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f8f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+
+    .invitation-container {
+      background-color: rgba(0, 0, 0, 0.7); /* Added background for better visibility */
+      color: #fff;
+      width: 80%;
+      max-width: 800px;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+    }
+
+    .couple-names {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 20px 0;
+      font-style: italic;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+    }
+
+    .couple-images {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      gap: 20px;
+    }
+
+    .couple-images img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 5px solid #fff;
+    }
+
+    .wedding-date, .venue, .parents {
+      font-size: 24px;
+      margin: 20px 0;
+      font-weight: lighter;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+    }
+
+    .rsvp {
+      font-size: 18px;
+      padding: 10px 20px;
+      background-color: #ffafbd;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .rsvp:hover {
+      background-color: #ff7b7b;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    .footer a {
+      color: #ffafbd;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Buttons for language switching */
+    .language-buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .language-buttons button {
+      padding: 10px 20px;
+      background-color: #ffafbd;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .language-buttons button:hover {
+      background-color: #ff7b7b;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 600px) {
+      .invitation-container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .couple-names {
+        font-size: 24px;
+      }
+
+      .wedding-date, .venue, .parents {
+        font-size: 18px;
+      }
+
+      .rsvp {
+        font-size: 16px;
+      }
+
+      .couple-images img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .language-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="invitation-container">
+    <h1 id="heading">Please join us!</h1>
+
+    <div class="couple-images">
+      <img src="OIP.jpg" alt="Couple Image 1" />
+      <img src="OIP.jpg" alt="Couple Image 2" />
+    </div>
+
+    <div class="couple-names" id="couple-names">
+      <p>NANDINI & PUNDLEEK</p>
+    </div>
+
+    <div class="wedding-date" id="wedding-date">
+      <p>On March 25th, 2025</p>
+    </div>
+
+    <div class="venue" id="venue">
+      <p>at Allipur thanda, post muttungi taluka chitagoppa</p>
+    </div>
+
+    <!-- New Section: Parents' Names and Their Place -->
+    <div class="parents" id="parents">
+      <p>Parents of the bride: Mr.Subhash jadhav and Mrs. lalitabai from Dinsi k thanda</p>
+      <p>Parents of the groom: Mr.Nagendra Rathod and Mrs. kamlibai from Allipur thanda</p>
+    </div>
+
+    <button class="rsvp" onclick="speakText()">Listen to Invitation</button>
+
+    <div class="footer">
+      <p id="footer">For more details, visit <a href="https://www.example.com" target="_blank">our wedding website</a>.</p>
+    </div>
+
+    <!-- Language Switcher Buttons -->
+    <div class="language-buttons">
+      <button onclick="switchToKannada()">Switch to Kannada</button>
+      <button onclick="switchToEnglish()">Switch to English</button>
+    </div>
+  </div>
+
+  <script>
+    let language = 'english';
+
+    // Check if SpeechSynthesis is supported by the browser
+    if ('speechSynthesis' in window) {
+      console.log("Speech synthesis is supported.");
+    } else {
+      alert("Sorry, your browser does not support speech synthesis.");
+    }
+
+    function speakText() {
+      const text = language === 'english' ? 
+        "Please join us! nandini and pundleek's wedding is on March 25th, 2025, at Allipur thanda, post muttungi taluka chidagoppa. Parents of the bride: Mr.Subhash jadhav and Mrs. lalitabai from  dinsi k thanda. Parents of the groom: Mr.Nagendra Rathod and Mrs. kamlibai from allipur thanda." : 
+        "dayavittu nammondige serikolli ! nandini mattu pundalik avara vivaaha vu march 25, 2025 randu muthaangi tallukin chidagoppadaa  allipura tanda dalli nadealide. hudugin tande-tayi: dinsi k thandad shri Subhash jadhav mattu shrimati Lalitabai. hudugan  tande-tayi : allipura thandad shri Nagendra Rathod mattu shrimati kamalabayi.";
+      
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = language === 'english' ? "en-IND" : "kn-IN";
+      speech.volume = 10;
+      speech.rate = 0.8;
+      speech.pitch = 5;
+
+      // Ensure speech synthesis starts only if supported
+      try {
+        speechSynthesis.speak(speech);
+      } catch (err) {
+        console.log("Error with speech synthesis:", err);
+      }
+    }
+
+    function switchToKannada() {
+      language = 'kannada';
+      document.getElementById('heading').innerText = 'ದಯವಿಟ್ಟು ನಮ್ಮೊಂದಿಗೆ ಸೇರಿಕೊಳ್ಳಿ';
+      document.getElementById('couple-names').innerHTML = '<p>ನಂದಿನಿ ಮತ್ತು ಪುಂಡ್ಲೀಕ್</p>';
+      document.getElementById('wedding-date').innerHTML = '<p>ಮಾರ್ಚ್ 25, 2025 ರಂದು</p>';
+      document.getElementById('venue').innerHTML = '<p>ಅಲ್ಲೀಪುರ ತಾಂಡಾದಲ್ಲಿ, ಮುತ್ತುಂಗಿ ತಾಲ್ಲೂಕಿನ ಚಿಟಗೊಪ್ಪದಲ್ಲಿ</p>';
+      document.getElementById('parents').innerHTML = '<p>ವಧುವಿನ ಪೋಷಕರು: ದಿನ್ಸಿ ಕೆ ತಾಂಡಾದ ಶ್ರೀ ಸುಭಾಷ್ ಜಾಧವ್ ಮತ್ತು ಶ್ರೀಮತಿ ಲಲಿತಾಬಾಯಿ</p><p>ವರನ ಪೋಷಕರು: ಅಲ್ಲೀಪುರ ತಾಂಡಾದ ಶ್ರೀ ನಾಗೇಂದ್ರ ರಾಥೋಡ್ ಮತ್ತು ಶ್ರೀಮತಿ ಕಮಲಾಬಾಯಿ</p>';
+      document.getElementById('footer').innerHTML = 'ವಿವರಗಳಿಗಾಗಿ, <a href="https://www.example.com" target="_blank">ನಮ್ಮ ವಿವಾಹ ವೆಬ್‌ಸೈಟ್</a> ಪರಿಶೀಲಿಸಿ.';
+    }
+
+    function switchToEnglish() {
+      language = 'english';
+      document.getElementById('heading').innerText = "Please join us";
+      document.getElementById('couple-names').innerHTML = '<p>nandini & pundleek</p>';
+      document.getElementById('wedding-date').innerHTML = '<p>On March 25th, 2025</p>';
+      document.getElementById('venue').innerHTML = '<p>at Allipur thanda, post muttungi taluka chitagoppa</p>';
+      document.getElementById('parents').innerHTML = '<p>Parents of the bride: Mr. Subhash jadhav and Mrs. lalitabai from dinsi k thanda</p><p>Parents of the groom: Mr.Nagendra Rathod and Mrs. kamlibai from allipur thanda</p>';
+      document.getElementById('footer').innerHTML = 'For more details, visit <a href="https://www.example.com" target="_blank">our wedding website</a>.';
+    }
+  </script>
+
+</body>
+</html>
+
